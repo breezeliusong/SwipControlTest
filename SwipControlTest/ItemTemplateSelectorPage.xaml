@@ -1,0 +1,51 @@
+﻿<Page
+    x:Class="SwipControlTest.ItemTemplateSelectorPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SwipControlTest"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <Style TargetType="ListViewItem">
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+        </Style>
+
+        <DataTemplate x:Key="OneItem" x:DataType="local:Model">
+            <SwipeControl x:Name="ListViewSwipeContainer"
+                          LeftItems="{StaticResource OneItem}"
+                          Height="60" >
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="{x:Bind Content}" FontSize="18"/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="One Item" FontSize="12"/>
+                    </StackPanel>
+                </StackPanel>
+            </SwipeControl>
+        </DataTemplate>
+
+        <DataTemplate x:Key="ThreeItems" x:DataType="local:Model">
+            <SwipeControl x:Name="ListViewSwipeContainer"
+                          LeftItems="{StaticResource ThreeItems}"
+                          Height="60" >
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="{x:Bind Content}" FontSize="18"/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Three Items" FontSize="12"/>
+                    </StackPanel>
+                </StackPanel>
+            </SwipeControl>
+        </DataTemplate>
+
+        <local:MyDataTemplateSelector x:Key="MyDataTemplateSelector" 
+                                      OneSwipItemTemplate="{StaticResource OneItem}" 
+                                      ThreeItemsTemplate="{StaticResource ThreeItems}"/>
+    </Page.Resources>
+
+    <ListView x:Name="sampleList" ItemsSource="{x:Bind ListSource}"
+              ItemTemplateSelector="{StaticResource MyDataTemplateSelector}">
+
+    </ListView>
+</Page>

@@ -1,0 +1,32 @@
+﻿<Page
+    x:Class="SwipControlTest.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SwipControlTest"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <ListView x:Name="sampleList" ItemsSource="{x:Bind ListSource}">
+        <ListView.ItemContainerStyle>
+            <Style TargetType="ListViewItem">
+                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+            </Style>
+        </ListView.ItemContainerStyle>
+        <ListView.ItemTemplate>
+            <DataTemplate x:DataType="local:Model">
+                <SwipeControl x:Name="ListViewSwipeContainer"
+                          LeftItems="{x:Bind Swips}"
+                          Height="60">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="{x:Bind Content}" FontSize="18"/>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Text Item details" FontSize="12"/>
+                        </StackPanel>
+                    </StackPanel>
+                </SwipeControl>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</Page>

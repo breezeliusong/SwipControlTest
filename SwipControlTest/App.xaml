@@ -1,0 +1,22 @@
+﻿<Application
+    x:Class="SwipControlTest.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SwipControlTest">
+    <Application.Resources>
+        <SymbolIconSource x:Key="AddIcon" Symbol="Add"/>
+        <SymbolIconSource x:Key="EditIcon" Symbol="Edit"/>
+        <SymbolIconSource x:Key="DeleteIcon" Symbol="Delete"/>
+
+        <SwipeItems x:Key="ThreeItems" Mode="Reveal">
+            <SwipeItem Text="Edit" IconSource="{StaticResource EditIcon}"/>
+            <SwipeItem Text="Delete" IconSource="{StaticResource DeleteIcon}"/>
+            <SwipeItem Text="Add"  IconSource="{StaticResource AddIcon}"/>
+        </SwipeItems>
+
+        <SwipeItems x:Key="OneItem" Mode="Reveal">
+            <SwipeItem Text="Add"  IconSource="{StaticResource AddIcon}"/>
+        </SwipeItems>
+    </Application.Resources>
+
+</Application>
